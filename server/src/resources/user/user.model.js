@@ -17,6 +17,18 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String
+    },
+    online: {
+      type: Boolean,
+      default: 0
+    },
+    busy: {
+      type: Boolean,
+      default: 1
+    },
+    points: {
+      type: Number,
+      default: 50
     }
   },
   { timestamps: true }
