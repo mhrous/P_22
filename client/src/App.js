@@ -7,6 +7,15 @@ import { createBrowserHistory } from "history";
 import { routerReducer } from "react-router-redux";
 
 import reducers from "./reducers";
+import {
+  AllUsers,
+  Dashboard,
+  Game,
+  Lobby,
+  Login,
+  Register,
+  User
+} from "./containers";
 
 const store = createStore(
   combineReducers({
@@ -22,17 +31,13 @@ const App = () => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path="/login" component={() => <div>log in page</div>} />
-        <Route exact path="/register" component={() => <div>room page</div>} />
-        <Route exact path="/lobby" component={() => <div>lobby page</div>} />
-        <Route
-          exact
-          path="/dashboard"
-          component={() => <div>dashboard page</div>}
-        />
-        <Route exact path="/game" component={() => <div>game page</div>} />
-        <Route exact path="/users" component={() => <div>all user page</div>} />
-        <Route exact path="/user/:id" component={() => <div>user page</div>} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/lobby" component={Lobby} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/game" component={Game} />
+        <Route exact path="/users" component={AllUsers} />
+        <Route exact path="/user/:id" component={User} />
         <Redirect to="/dashboard" />
       </Switch>
     </Router>
