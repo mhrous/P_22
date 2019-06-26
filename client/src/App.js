@@ -4,11 +4,13 @@ import promiseMiddleware from "redux-promise";
 import { Provider } from "react-redux";
 import { Router, Route, Redirect, Switch } from "react-router";
 import { createBrowserHistory } from "history";
-
 import { routerReducer } from "react-router-redux";
+
+import reducers from "./reducers";
 
 const store = createStore(
   combineReducers({
+    ...reducers,
     routing: routerReducer
   }),
   applyMiddleware(promiseMiddleware)
