@@ -1,10 +1,4 @@
 import Keywords from "./Keywords";
 import { getJSON, postJSON, putJSON, deleteJSON } from "./httpServices";
-
-export default {
-  Keywords,
-  getJSON,
-  postJSON,
-  putJSON,
-  deleteJSON
-};
+import { toggleToken } from "./auth";
+export { Keywords, getJSON, postJSON, putJSON, deleteJSON, toggleToken };

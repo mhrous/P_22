@@ -1,0 +1,57 @@
+.ant-layout-header {
+  padding: 0;
+}
+.ant-page-header {
+  background: #001529;
+  height: 100%;
+}
+
+#auth {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #001529;
+}
+#auth .form {
+  text-align: center;
+  width: 380px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#auth input {
+  border-radius: 30px;
+  padding-left: 30px;
+}
+#auth img {
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+#auth .item {
+  position: relative;
+  margin-bottom: 20px;
+}
+.image-container {
+  height: 100px;
+}
+
+#auth button {
+  border-radius: 30px;
+  border: none;
+}
+
+#main-layout {
+  width: 100vw;
+  height: 100vh;
+}
+#main-layout .layout-item {
+  padding: 20px;
+}
+
+#logo {
+  color: #fff;
+  font-size: 24px;
+}

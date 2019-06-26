@@ -16,12 +16,22 @@ import {
   Register,
   User
 } from "./containers";
+import { TOKEN_NAME } from "./config";
+import { toggleToken } from "./utils";
+
+const bootstrappedStore = { USER: { isLoggedIn: false } };
+const token = localStorage.getItem(TOKEN_NAME);
+if (token && token !== "") {
+  toggleToken(token);
+  bootstrappedStore.USER = { isLoggedIn: true };
+}
 
 const store = createStore(
   combineReducers({
     ...reducers,
     routing: routerReducer
   }),
+  bootstrappedStore,
   applyMiddleware(promiseMiddleware)
 );
 

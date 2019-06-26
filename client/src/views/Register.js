@@ -1,7 +1,9 @@
-import React, { Fragment } from "react";
+import React from "react";
+
+import { RegisterFrom } from "../compoents";
 
 export default () => (
-  <Fragment>
-    <div>Register</div>
-  </Fragment>
+  <div id="auth">
+    <RegisterFrom />
+  </div>
 );
