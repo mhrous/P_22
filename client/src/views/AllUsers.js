@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
-import { HeaderApp } from "../compoents";
+import { HeaderApp, UserRomeContainers } from "../compoents";
 
 const { Header, Content } = Layout;
 export default () => (
@@ -9,7 +9,9 @@ export default () => (
       <HeaderApp />
     </Header>
     <Layout>
-      <Content className="layout-item ">Content</Content>
+      <Content className="layout-item ">
+        <UserRomeContainers />
+      </Content>
     </Layout>
   </Layout>
 );
