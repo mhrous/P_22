@@ -98,7 +98,7 @@ class Example extends PureComponent {
         <Line
           type="monotone"
           dataKey="Music"
-          stroke="#001529"
+          stroke="#073b4c"
           activeDot={{ r: 8 }}
         />
         <Line type="monotone" dataKey="history" stroke="#1890ff" />

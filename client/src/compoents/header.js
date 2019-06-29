@@ -60,12 +60,12 @@ const HeaderApp = ({ location }) => {
           <Avatar
             shape="square"
             icon="bell"
-            style={{ backgroundColor: "#001529", color: "#1890ff" }}
+            style={{ backgroundColor: "#073b4c", color: "#1890ff" }}
           />
         </Badge>,
         <Avatar
           key="1"
-          style={{ backgroundColor: "#001529", color: "#1890ff" }}
+          style={{ backgroundColor: "#073b4c", color: "#1890ff" }}
           shape="square"
           icon="user"
         />

@@ -1,0 +1,22 @@
+export default {
+  Sports: "magenta",
+  "Video Games": "red",
+  Television: "volcano",
+  Music: "orange",
+  Politics: "gold",
+  History: "lime",
+  Computers: "green",
+  "Japanese Anime & Manga": "cyan",
+  Film: "blue",
+  "Musicals & Theatres": "geekblue",
+  Books: "purple",
+  Mythology: "magenta",
+  "General Knowledge": "red",
+  Geography: "volcano",
+  Comics: "orange",
+  Celebrities: "gold",
+  "Science & Nature": "lime",
+  Mathematics: "green",
+  "Board Games": "cyan",
+  Art: "blue"
+};

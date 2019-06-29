@@ -4,7 +4,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #fdfffc;
 }
 
 /* Handle */
@@ -17,13 +17,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
 
 .ant-layout-header {
   padding: 0;
   padding: 0;
 }
 .ant-page-header {
-  background: #001529;
+  background: #073b4c;
   height: 100%;
 }
 .ant-page-header-title-view-tags {
@@ -39,7 +46,7 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  background: #001529;
+  background: #073b4c;
 }
 #auth .form {
   text-align: center;
@@ -82,12 +89,12 @@
 }
 
 #logo {
-  color: #fff;
+  color: #fdfffc;
   font-size: 36px;
 }
 .header-link {
   font-size: 18px;
-  color: #fff;
+  color: #fdfffc;
   margin-left: 10px;
 }
 
@@ -142,11 +149,11 @@
   left: 50%;
   top: 0%;
   transform: translate(-50%, -50%);
-  background: #001529;
+  background: #073b4c;
   border-radius: 50%;
   width: 76px;
   height: 75px;
-  color: #fff;
+  color: #fdfffc;
   line-height: 75px;
   font-size: 28px;
 }
@@ -170,7 +177,7 @@
 }
 
 #game .questions {
-  background: #fff;
+  background: #fdfffc;
   padding: 20px;
   text-align: center;
   font-size: 20px;
@@ -216,7 +223,7 @@
 }
 
 #game .answers .answer {
-  background: #fff;
+  background: #fdfffc;
   padding: 20px;
   text-align: center;
   font-size: 20px;
@@ -251,6 +258,7 @@
 #game .answers .answer:hover::before {
   background: #1890ff;
 }
+#lobby-sider .name,
 #game-sider .name {
   margin-left: 10px;
   line-height: 32px;
@@ -258,7 +266,7 @@
 #game-sider .point {
   position: absolute;
   background: #1890ff;
-  color: #fff;
+  color: #fdfffc;
   top: 50%;
   right: 0;
   transform: translate(-50%, -50%);
@@ -278,4 +286,25 @@
 #user-header .ant-avatar {
   width: 80px;
   height: 80px;
+}
+
+.users .ant-card-actions {
+  background: #073b4c;
+}
+.users .ant-card-actions li {
+  margin: 3px 0;
+}
+
+.users .ant-card-actions .info {
+  display: block;
+  color: #fdfffc;
+  font-size: 18px;
+}
+.users .ant-card-actions .value {
+  display: block;
+  color: #1890ff;
+  font-size: 18px;
+}
+.users .ant-card-body {
+  padding-bottom: 0;
 }

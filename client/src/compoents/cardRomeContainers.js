@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Layout,
@@ -9,8 +9,11 @@ import {
   Icon,
   Card,
   Tag,
-  Avatar
+  Avatar,
+  Modal
 } from "antd";
+
+import { tagColor } from "../utils";
 
 const { Header, Content } = Layout;
 
@@ -74,7 +77,9 @@ const RoomCard = ({ card: { name, point, category, player } }) => {
       <p className="point">{point}</p>
       <div className="category">
         {category.map((e, i) => (
-          <Tag key={i}>{e}</Tag>
+          <Tag key={i} color={tagColor[e]}>
+            {e}
+          </Tag>
         ))}
       </div>
       <div className="player">
@@ -86,15 +91,27 @@ const RoomCard = ({ card: { name, point, category, player } }) => {
   );
 };
 
+const AddRoomModel = () => <div>model</div>;
+
 export default () => {
+  const [visibleModel, setVisibleModel] = useState(false);
   return (
     <Layout className="room-containers">
+      <Modal
+        title="Basic Modal"
+        visible={visibleModel}
+        onOk={() => setVisibleModel(false)}
+        onCancel={() => setVisibleModel(false)}
+      >
+        <AddRoomModel />
+      </Modal>
       <Button
         type="primary"
         className="add-new-room"
         shape="circle"
         icon="plus"
         size="large"
+        onClick={() => setVisibleModel(true)}
       />
 
       <Header

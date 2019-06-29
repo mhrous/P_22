@@ -3,26 +3,24 @@ import React from "react";
 import {
   Layout,
   Input,
-  Button,
+  Card,
+  Avatar,
   Menu,
   Dropdown,
-  Icon,
-  Card,
-  Tag,
-  Avatar
+  Button,
+  Icon
 } from "antd";
 
 const { Header, Content } = Layout;
 
 const SortMenu = () => (
   <Menu>
-    <Menu.Item key="1">Best For My</Menu.Item>
+    <Menu.Item key="1">Similarities</Menu.Item>
+    <Menu.Item key="3">name</Menu.Item>
+
     <Menu.Item key="2">point</Menu.Item>
 
-    <Menu.Item key="3">name</Menu.Item>
-    <Menu.Item key="4">category</Menu.Item>
-
-    <Menu.Item key="5">defcalty</Menu.Item>
+    <Menu.Item key="4">rate</Menu.Item>
   </Menu>
 );
 
@@ -46,37 +44,84 @@ const HeaderPart = () => {
   );
 };
 
-const cardData = [
+const userData = [
   {
-    name: "Room 1",
-    point: 10,
-    category: ["Music", "Politics", "Books"],
-    player: ["a", "b"]
-  },
-  {
-    name: "Room 2",
-    point: 40,
-    category: ["Japanese Anime & Manga", "Film"],
-    player: ["j", "n"]
-  },
-  {
-    name: "Room 3",
+    name: "ahmad",
+    color: "#27365d",
     point: 30,
-    category: ["History", "Computers", "Musicals & Theatres"],
-    player: ["m", "f", "sduhcsh"]
+    rate: 2
+  },
+  {
+    name: "ali",
+    color: "#dd23de",
+    point: 40,
+    rate: 9
+  },
+  {
+    name: "fadi",
+    color: "#b3b383",
+    point: 80,
+    rate: 8.5
+  },
+  {
+    name: "ahmad",
+    color: "#27365d",
+    point: 30,
+    rate: 2
+  },
+  {
+    name: "ali",
+    color: "#dd23de",
+    point: 40,
+    rate: 9
+  },
+  {
+    name: "fadi",
+    color: "#b3b383",
+    point: 80,
+    rate: 8.5
+  },
+  {
+    name: "ahmad",
+    color: "#27365d",
+    point: 30,
+    rate: 2
+  },
+  {
+    name: "ali",
+    color: "#dd23de",
+    point: 40,
+    rate: 9
+  },
+  {
+    name: "fadi",
+    color: "#b3b383",
+    point: 80,
+    rate: 8.5
   }
 ];
 
-const RoomCard = ({ card: { name, point, category, player } }) => {
+const RoomCard = ({ card: { name, color, point, rate } }) => {
   return (
-    <Card style={{ width: 300 }}>
-      <Card.Meta
-        avatar={
-          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-        }
-        title={name}
-        description="This is the description"
-      />
+    <Card
+      className="user-card"
+      hoverable
+      style={{ width: 250, textAlign: "center" }}
+      actions={[
+        <div>
+          <span className="info">Point</span>
+          <span className="value">{point}</span>
+        </div>,
+        <div>
+          <span className="info">Rate</span>
+          <span className="value">{rate}</span>
+        </div>
+      ]}
+    >
+      <Avatar size={120} style={{ backgroundColor: color, fontSize: "26px" }}>
+        {name[0].toUpperCase()}
+      </Avatar>
+      <h2 className="m-t-10">{name}</h2>
     </Card>
   );
 };
@@ -90,7 +135,7 @@ export default () => {
         <HeaderPart />
       </Header>
       <Content className="users">
-        {cardData.map((card, i) => (
+        {userData.map((card, i) => (
           <RoomCard key={i} card={card} />
         ))}
       </Content>
