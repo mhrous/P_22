@@ -4,7 +4,8 @@ import promiseMiddleware from "redux-promise";
 import { Provider } from "react-redux";
 import { Router, Route, Redirect, Switch } from "react-router";
 import { createBrowserHistory } from "history";
-import { routerReducer } from "react-router-redux";
+import { routerReducer, routerMiddleware } from "react-router-redux";
+import logger from "redux-logger";
 
 import reducers from "./reducers";
 import {
@@ -19,11 +20,16 @@ import {
 import { TOKEN_NAME } from "./config";
 import { toggleToken } from "./utils";
 
+const history = createBrowserHistory();
+const reactRouterMiddleware = routerMiddleware(history);
+
 const bootstrappedStore = { USER: { isLoggedIn: false } };
 const token = localStorage.getItem(TOKEN_NAME);
+const user = JSON.parse(localStorage.getItem(`${TOKEN_NAME}-data`));
+console.log(user);
 if (token && token !== "") {
   toggleToken(token);
-  bootstrappedStore.USER = { isLoggedIn: true };
+  bootstrappedStore.USER = { isLoggedIn: true, ...user };
 }
 
 const store = createStore(
@@ -32,10 +38,8 @@ const store = createStore(
     routing: routerReducer
   }),
   bootstrappedStore,
-  applyMiddleware(promiseMiddleware)
+  applyMiddleware(promiseMiddleware, reactRouterMiddleware, logger)
 );
-
-const history = createBrowserHistory();
 
 const App = () => (
   <Provider store={store}>

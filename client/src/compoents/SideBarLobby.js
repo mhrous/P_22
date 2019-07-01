@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Avatar, Tag } from "antd";
+import { List, Avatar } from "antd";
 const array = [
   { name: "Ahmad", point: 8 },
   { name: "jod Nour", point: 6 },

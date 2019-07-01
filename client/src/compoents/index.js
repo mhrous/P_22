@@ -8,6 +8,7 @@ import CardRomeContainers from "./cardRomeContainers";
 import UserRomeContainers from "./userCardContainers";
 import QuestionContainers from "./questionContainers";
 import UserHeader from "./userHeader";
+import { UserChart, HeaderChart } from "./userChartsContainer";
 export {
   LogInForm,
   RegisterFrom,
@@ -18,5 +19,7 @@ export {
   CardRomeContainers,
   UserRomeContainers,
   QuestionContainers,
-  UserHeader
+  UserHeader,
+  UserChart,
+  HeaderChart
 };

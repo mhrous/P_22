@@ -1,12 +1,19 @@
 import { connect } from "react-redux";
+import { toggleCategoryChart } from "../actions";
 import { User } from "../views";
 
-const mapStateToProps = ({}) => {
-  return {};
+const mapStateToProps = ({
+  USER_STATISTICS: { categorys, activeCategory }
+}) => {
+  return { categorys, activeCategory };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    _toggleCategoryChart(data) {
+      dispatch(toggleCategoryChart(data));
+    }
+  };
 };
 
 export default connect(

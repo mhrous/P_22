@@ -15,7 +15,7 @@ const reduceRequest = config => {
 const getJSON = (url, headers = {}) => {
   const config = {
     method: "GET",
-    url: `${API_URL}url`,
+    url: `${API_URL}${url}`,
     headers
   };
   return reduceRequest(config);
@@ -24,7 +24,7 @@ const getJSON = (url, headers = {}) => {
 const postJSON = (url, data = {}, headers = {}) => {
   const config = {
     method: "POST",
-    url: `${API_URL}url`,
+    url: `${API_URL}${url}`,
     data,
     headers
   };
@@ -34,7 +34,7 @@ const postJSON = (url, data = {}, headers = {}) => {
 const putJSON = (url, data = {}, headers = {}) => {
   const config = {
     method: "PUT",
-    url: `${API_URL}url`,
+    url: `${API_URL}${url}`,
     data,
     headers
   };
@@ -44,7 +44,7 @@ const putJSON = (url, data = {}, headers = {}) => {
 const deleteJSON = (url, headers = {}) => {
   const config = {
     method: "DELETE",
-    url: `${API_URL}url`,
+    url: `${API_URL}${url}`,
     headers
   };
   return reduceRequest(config);

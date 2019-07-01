@@ -3,7 +3,7 @@ import { Input, Button, Icon } from "antd";
 import { Link } from "react-router-dom";
 import User from "../assets/team.svg";
 
-export default () => {
+export default ({ signup }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,7 +43,7 @@ export default () => {
           size="large"
           type="primary"
           onClick={() => {
-            console.log({ password, name, email });
+            signup({ password, name, email });
           }}
         >
           Register

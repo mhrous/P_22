@@ -3,28 +3,28 @@ import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import config from './config'
 import cors from 'cors'
-import { signup, signin, protect } from './utils/auth'
-import { connect } from './utils/db'
-import userRouter from './resources/user/user.router'
+import { signup, signin, protect, ConnectDB } from './utils'
+import { userRouter, categoryRouter } from './resources'
 
 export const app = express()
 
 app.disable('x-powered-by')
-
+app.disable('etag')
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-app.post('/signup', signup)
-app.post('/signin', signin)
+app.post('/api/signup', signup)
+app.post('/api/signin', signin)
+app.use('/api/category', categoryRouter)
 
 app.use('/api', protect)
 app.use('/api/user', userRouter)
 
 export const start = async () => {
   try {
-    await connect()
+    await ConnectDB()
     app.listen(config.port, () => {
       console.log(`REST API on http://localhost:${config.port}/api`)
     })

@@ -308,3 +308,20 @@
 .users .ant-card-body {
   padding-bottom: 0;
 }
+
+.icon-in-dropdown {
+  position: absolute;
+  left: calc(100% - 16px);
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+.user-action {
+  position: absolute;
+  top: calc(100% - 20px);
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.user-action button {
+  margin-bottom: 10px;
+}

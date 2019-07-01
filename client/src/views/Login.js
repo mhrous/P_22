@@ -1,9 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { LogInForm } from "../compoents";
 
-export default () => (
-  <div id="auth">
-    <LogInForm />
-  </div>
-);
+class Login extends Component {
+  render() {
+    return (
+      <div id="auth">
+        <LogInForm />
+      </div>
+    );
+  }
+}
+
+export default Login;

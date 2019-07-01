@@ -1,6 +1,11 @@
 import config from '../config'
-import { User } from '../resources/user/user.model'
+import { UserDB } from '../resources'
 import jwt from 'jsonwebtoken'
+
+const generateRandomColor = () =>
+  `rgb(${Math.floor(Math.random() * 240)},${Math.floor(
+    Math.random() * 240
+  )},${Math.floor(Math.random() * 240)})`
 
 export const newToken = user => {
   return jwt.sign({ id: user.id }, config.secrets.jwt, {
@@ -20,17 +25,34 @@ export const signup = async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({ message: 'need email and password' })
   }
-
   try {
-    const user = await User.create(req.body)
+    req.body.color = generateRandomColor()
+
+    const user = await UserDB.create(req.body)
+
     const token = newToken(user)
-    return res.status(201).send({ token })
+    console.log(token)
+    return res.status(201).json({
+      data: {
+        token,
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          points: user.point,
+          color: user.color
+        }
+      }
+    })
   } catch (e) {
+    console.error(e)
     return res.status(500).end()
   }
 }
 
 export const signin = async (req, res) => {
+  console.log(req.body, 'cccccccccccccc')
+
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({ message: 'need email and password' })
   }
@@ -38,9 +60,7 @@ export const signin = async (req, res) => {
   const invalid = { message: 'Invalid email and passoword combination' }
 
   try {
-    const user = await User.findOne({ email: req.body.email })
-      .select('email password')
-      .exec()
+    const user = await UserDB.findOne({ email: req.body.email }).exec()
 
     if (!user) {
       return res.status(401).send(invalid)
@@ -53,14 +73,27 @@ export const signin = async (req, res) => {
     }
 
     const token = newToken(user)
-    return res.status(201).send({ token })
+    return res.status(201).json({
+      data: {
+        token,
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          points: user.point,
+          color: user.color
+        }
+      }
+    })
   } catch (e) {
+    console.error(e)
     res.status(500).end()
   }
 }
 
 export const protect = async (req, res, next) => {
   const bearer = req.headers.authorization
+  console.log(req.body, 'nnnnnnnnnnnnnnnnnnn')
 
   if (!bearer || !bearer.startsWith('Bearer ')) {
     return res.status(401).end()
@@ -74,7 +107,7 @@ export const protect = async (req, res, next) => {
     return res.status(401).end()
   }
 
-  const user = await User.findById(payload.id)
+  const user = await UserDB.findById(payload.id)
     .select('-password')
     .lean()
     .exec()

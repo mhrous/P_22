@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt'
 
 const userSchema = new mongoose.Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
       type: String,
       required: true
@@ -29,6 +28,9 @@ const userSchema = new mongoose.Schema(
     points: {
       type: Number,
       default: 50
+    },
+    color: {
+      type: String
     }
   },
   { timestamps: true }
@@ -62,4 +64,4 @@ userSchema.methods.checkPassword = function(password) {
   })
 }
 
-export const User = mongoose.model('user', userSchema)
+export default mongoose.model('user', userSchema)
