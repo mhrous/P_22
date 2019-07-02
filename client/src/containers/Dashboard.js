@@ -2,8 +2,11 @@ import { connect } from "react-redux";
 import { Dashboard } from "../views";
 import { setCategory, toggleCategory, toggleDifficulty } from "../actions";
 
-const mapStateToProps = ({ FILTER: { categorys, difficulty } }) => {
-  return { categorys, difficulty };
+const mapStateToProps = ({
+  FILTER: { categorys, difficulty },
+  USER: { isLoggedIn, _id }
+}) => {
+  return { categorys, difficulty, isLoggedIn, _id };
 };
 
 const mapDispatchToProps = dispatch => {

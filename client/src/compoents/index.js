@@ -5,7 +5,7 @@ import SideBarDashborad from "./sideBarDashbord";
 import SideBarGame from "./sideBareGame";
 import { SideBarLobbyLeft } from "./sideBarLobby";
 import CardRomeContainers from "./cardRomeContainers";
-import UserRomeContainers from "./userCardContainers";
+import UserCardContainers from "./userCardContainers";
 import QuestionContainers from "./questionContainers";
 import UserHeader from "./userHeader";
 import { UserChart, HeaderChart } from "./userChartsContainer";
@@ -17,7 +17,7 @@ export {
   SideBarGame,
   SideBarLobbyLeft,
   CardRomeContainers,
-  UserRomeContainers,
+  UserCardContainers,
   QuestionContainers,
   UserHeader,
   UserChart,

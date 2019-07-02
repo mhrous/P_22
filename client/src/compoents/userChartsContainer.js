@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Component } from "react";
 
 import { PageHeader, Tag } from "antd";
 
@@ -11,54 +11,51 @@ import {
   Legend
 } from "recharts";
 
-const data = [
-  {
-    name: "jan",
-    history: 4000,
-    Music: 2400,
-    amt: 2400
-  },
-  {
-    name: "feb",
-    history: 3000,
-    Music: 1398,
-    amt: 2210
-  },
-  {
-    name: "mar",
-    history: 2000,
-    Music: 9800,
-    amt: 2290
-  },
-  {
-    name: "apr",
-    history: 2780,
-    Music: 3908,
-    amt: 2000
-  },
-  {
-    name: "may",
-    history: 1890,
-    Music: 4800,
-    amt: 2181
-  },
-  {
-    name: "june",
-    history: 2390,
-    Music: 3800,
-    amt: 2500
-  }
-];
+import { chartColor } from "../utils";
+const generateRandomColor = () =>
+  `rgb(${Math.floor(Math.random() * 240)},${Math.floor(
+    Math.random() * 240
+  )},${Math.floor(Math.random() * 240)})`;
 
-class UserChart extends PureComponent {
-  static jsfiddleUrl = "https://jsfiddle.net/alidingling/xqjtetw0/";
-
+class UserChart extends Component {
   render() {
+    let { game, activeCategory, categorys } = this.props;
+    const tem = [];
+    for (let k of categorys) {
+      let i = 0;
+      for (let g of game) {
+        for (let [category, T, F] of g.statistics) {
+          if (category == k) {
+            if (!tem[i]) {
+              tem.push({ name: i });
+            }
+            i++;
+          }
+        }
+      }
+    }
+
+    for (let [k, v] of Object.entries(activeCategory)) {
+      if (v) {
+        let i = 0;
+        for (let g of game) {
+          for (let [category, T, F] of g.statistics) {
+            if (category == k) {
+              if (!tem[i]) {
+                tem.push({ name: i });
+              }
+              tem[i][category] = Math.round((T / (T + F)) * 100);
+              i++;
+            }
+          }
+        }
+      }
+    }
     return (
       <LineChart
         width={990}
         height={600}
-        data={data}
+        data={tem}
         margin={{
           top: 5,
           right: 30,
@@ -71,15 +68,24 @@ class UserChart extends PureComponent {
 
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Music" stroke="#073b4c" />
-        <Line type="monotone" dataKey="history" stroke="#1890ff" />
+        {Object.entries(activeCategory).map(([k, v]) => {
+          if (v) {
+            return (
+              <Line
+                key={k}
+                type="monotone"
+                dataKey={k}
+                stroke={chartColor[k]}
+              />
+            );
+          }
+        })}
       </LineChart>
     );
   }
 }
 
 const HeaderChart = ({ categorys, activeCategory, toggleCategoryChart }) => {
-  console.log({ categorys, activeCategory });
   return (
     <PageHeader style={{ height: "100px", background: "#fff" }}>
       {categorys.map((e, i) => (

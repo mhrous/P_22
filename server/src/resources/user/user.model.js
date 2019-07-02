@@ -31,6 +31,15 @@ const userSchema = new mongoose.Schema(
     },
     color: {
       type: String
+    },
+
+    numTrue: {
+      type: Number,
+      default: 0
+    },
+    numFalse: {
+      type: Number,
+      default: 0
     }
   },
   { timestamps: true }
@@ -61,6 +70,26 @@ userSchema.methods.checkPassword = function(password) {
 
       resolve(same)
     })
+  })
+}
+
+userSchema.statics.updatePoints = async function(id, points) {
+  return this.findOne({ _id: id }).then(user => {
+    user.points = points + user.points
+    return user.save()
+  })
+}
+
+userSchema.statics.updateNumTrue = async function(id, numTrue) {
+  return this.findOne({ _id: id }).then(user => {
+    user.numTrue = numTrue + user.points
+    return user.save()
+  })
+}
+userSchema.statics.updateNumFalse = async function(id, numFalse) {
+  return this.findOne({ _id: id }).then(user => {
+    user.numFalse = numFalse + user.points
+    return user.save()
   })
 }
 

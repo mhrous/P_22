@@ -20,12 +20,14 @@ class Dashborader extends Component {
       categorys,
       difficulty,
       _toggleCategory,
-      _toggleDifficulty
+      _toggleDifficulty,
+      isLoggedIn,
+      _id
     } = this.props;
     return (
       <Layout id="main-layout">
         <Header>
-          <HeaderApp />
+          <HeaderApp isLoggedIn={isLoggedIn} _id={_id} />
         </Header>
         <Layout>
           <Sider width="250" theme="light" className="layout-item ">

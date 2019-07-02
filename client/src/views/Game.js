@@ -6,10 +6,12 @@ const { Header, Sider, Content } = Layout;
 
 class Game extends Component {
   render() {
+    const { isLoggedIn, _id } = this.props;
+
     return (
       <Layout id="main-layout">
         <Header>
-          <HeaderApp />
+          <HeaderApp isLoggedIn={isLoggedIn} _id={_id} />
         </Header>
         <Layout>
           <Sider

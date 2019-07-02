@@ -3,8 +3,8 @@ import { Register } from "../views";
 import { signup } from "../actions";
 import { push } from "react-router-redux";
 
-const mapStateToProps = ({}) => {
-  return {};
+const mapStateToProps = ({ USER: { isLoggedIn } }) => {
+  return { isLoggedIn };
 };
 
 const mapDispatchToProps = dispatch => {

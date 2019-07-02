@@ -11,6 +11,7 @@ import {
   Icon
 } from "antd";
 
+import { Link } from "react-router-dom";
 const { Header, Content } = Layout;
 
 const SortMenu = ({ setSortBy, sortBy }) => (
@@ -59,7 +60,6 @@ const HeaderPart = ({ setSearch, search, setSortBy, sortBy }) => {
         <Input.Search
           size="large"
           placeholder="Search"
-          onSearch={value => console.log(value)}
           style={{ width: 300 }}
           value={search}
           onChange={e =>
@@ -128,7 +128,7 @@ const userData = [
   }
 ];
 
-const RoomCard = ({ card: { name, color, point, rate } }) => {
+const UserCard = ({ card: { name, color, points, numTrue, numFalse } }) => {
   return (
     <Card
       className="user-card"
@@ -137,11 +137,15 @@ const RoomCard = ({ card: { name, color, point, rate } }) => {
       actions={[
         <div>
           <span className="info">Point</span>
-          <span className="value">{point}</span>
+          <span className="value">{points}</span>
         </div>,
         <div>
           <span className="info">Rate</span>
-          <span className="value">{rate}</span>
+          <span className="value">
+            {numTrue === 0 && numFalse === 0
+              ? 0
+              : Math.round((numTrue / (numTrue + numFalse)) * 100)}
+          </span>
         </div>
       ]}
     >
@@ -153,11 +157,11 @@ const RoomCard = ({ card: { name, color, point, rate } }) => {
   );
 };
 
-export default () => {
+export default ({ isLoggedIn, users }) => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
 
-  const showCard = userData.filter(e =>
+  const showCard = users.filter(e =>
     e.name.toLowerCase().startsWith(search.toLowerCase())
   );
   return (
@@ -174,7 +178,9 @@ export default () => {
       </Header>
       <Content className="users">
         {showCard.map((card, i) => (
-          <RoomCard key={i} card={card} />
+          <Link key={i} to={`/user/${card._id}`}>
+            <UserCard card={card} />
+          </Link>
         ))}
       </Content>
     </Layout>
