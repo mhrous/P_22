@@ -6,7 +6,7 @@ import { start } from './server'
 // import generationUsers from './scripts/generationFakeUser'
 // generationUsers()
 
-import generationFackStatistics from './scripts/generationFackStatistics'
-generationFackStatistics()
+// import generationFackStatistics from './scripts/generationFackStatistics'
+// generationFackStatistics()
 
 start()
